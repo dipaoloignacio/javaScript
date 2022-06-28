@@ -1,6 +1,5 @@
 //MARKET.
-//Creo la clase de los productos .
-
+//Creo el Objeto de los productos .
 class producto {
     constructor(tipo, nombre, precio, envio) {
         this.tipo = tipo;
@@ -8,200 +7,162 @@ class producto {
         this.precio = precio;
         this.envio = envio;
     }
-
 }
 
-// //funcion para validar el tipo de producto.
-// function tipoProducto() {
-//     do {
-//         tipo = parseFloat(prompt("Bienvenido a NDP MARKET.\n" +
-//             "Ingrese '1' para vender Comida.\n" +
-//             "Ingrese '2' para vender tecnologia.\n" +
-//             "Ingrese '3' para vender inmuebles.\n" +
-//             "Ingrese '4' para vender otros.\n"));
+let productos = [];
+//Agrego contadores para sacar el porcentaje de los tipos de productos que tengo.
+let contador = 0;
+let contador2 = 0;
+let contador3 = 0;
+let contador1 = 0;
 
-//         if (isNaN(tipo) || tipo < 0 || tipo > 4) {
-//             alert("Opcion no valida.");
-//         }
+//Funcion para sacar los porcentajes de productos.
+function porcentaje() {
 
-//     } while (isNaN(tipo) || tipo < 0 || tipo > 4);
-
-//     switch (tipo) {
-//         case 1:
-//             return tipo = "Comida"
-//             break;
-//         case 2:
-//             return tipo = "Tecnologia"
-//             break;
-//         case 3:
-//             return tipo = "inmuebles"
-//             break;
-//         case 4:
-//             return tipo = "otros"
-//             break;
-//     }
-// }
-
-// //funcion para validar nombre del producto.
-// function nombreProducto() {
-//     do {
-//         nombre = (prompt("Porfavor ingrese el nombre del producto que desea vender."));
-
-//         if (isNaN(nombre) === false) {
-//             alert("Error intente de nuevo.");
-//         }
-
-//     } while (isNaN(nombre) === false);
-//     return nombre;
-// }
-// //funcion para validar precio del producto.
-// function precioProducto() {
-//     do {
-//         precio = parseFloat(prompt("Porfavor ingrese el precio del producto que desea vender."));
-
-//         if (isNaN(precio) || precio < 0) {
-//             alert("Error intente de nuevo.");
-//         }
-
-//     } while (isNaN(precio) || precio < 0);
-//     return precio;
-// }
-
-// //funcion para validar si tiene envio o no.
-// function envioProducto() {
-//     do {
-//         envio = (prompt("Porfavor ingrese '1' si posee envio o '2' de lo contrario."));
-
-//         if (isNaN(envio) || envio < 0 || envio > 2) {
-//             alert("Error intente de nuevo.");
-//         }
-
-//     } while (isNaN(envio) || envio < 0 || envio > 2);
-
-//     if (envio == 1) {
-//         return envio = "Si";
-//     } else {
-//         return envio = "No";
-//     }
-// }
-
-// // Creo un array vacio para almacenar los productos.
-// let productos = [];
-
-
-// //Creo un cliclo para seguir preguntando si quiere vender mas productos o no y para crear un producto.
-// do {
-//     n1 = parseFloat(prompt(" Desea Vender o seguir vendiendo? \n" +
-//         " Ingrese '1' para comenzar a vender. \n" +
-//         " Ingrese '2' para finalizar."));
-
-//     switch (n1) {
-//         case 1:
-//             let product = new producto(tipoProducto(), nombreProducto(), precioProducto(), envioProducto());
-
-//             productos.push(product);
-//             break;
-//         case 2:
-//             break;
-//         default:
-//             alert("opcion invalida, intentalo de nuevo.");
-//     }
-
-// } while (n1 != 2);
-
-let productos= [];
-
-const produc = new producto("Comida", "fideos" , 5 , "No");
-const produc1 = new producto("Tecnologia", "celular" , 15 , "Si");
-const produc2 = new producto("Inmuebles", "departamento" , 25 , "Si");
-const produc3 = new producto("Comida", "carne" , 35 , "Si");
-const produc5 = new producto("Comida", "snaks" , 45 , "No");
-const produc6 = new producto("Otros", "snaks" , 45 , "No");
-const produc7 = new producto("Otros", "snaks" , 45 , "No");
-
-productos.push(produc,produc1,produc2,produc3,produc5,produc6,produc7);
-
-
-
-//AGREGRO LOS DIV DE ACUERDO CON LA CANTIDAD DE PRODUCTOS QUE AGREGO EL USUARIO.
-const cant = document.getElementById('mostrar-productos');
-
-
-for (let i = 0; i < productos.length; i++) {
-
-    cant.innerHTML += '<div class="producto">' + '</div>';
-
-}
-
-console.log(cant);
-
-
-//TOMO LOS DIV CON LA CLASE "CUADROS" QUE GENERE ANTERIORMENTE, QUE A SU VEZ VAN A SER LA MISMA CANTIDAD DE PRODUCTOS.
-const prod = document.getElementsByClassName('producto');
-
-//MEDIANTE UN CICLO 'FOR' ITERO CADA DIV CON LA CLASE 'CUADROS' Y TAMBIEN CADA PRODUCTO.
-//TAMBIEN LE COLOCO LAS ESPECIFICACIONES DEL PRODUCTO INGRESADO.
-for (let i = 0; i < prod.length; i++) {
-    prod[i].innerHTML = '<ul>' +
-        '<li>' + '<h5>' + "TIPO DE PRODUCTO: " + '</h5>' + '<p>' + productos[i].tipo + '</p>' + '</li>' +
-        '<li>' + '<h5>' + "NOMBRE: " + '</h5>' + '<p>' + productos[i].nombre + '</p>' + '</li>' +
-        '<li>' + '<h5>' + "PRECIO: " + '</h5>' + '<p>' + " $" + productos[i].precio + '</p>' + '</li>' +
-        '<li>' + '<h5>' + "POSEE ENVIO: " + '</h5>' + '<p>' + productos[i].envio + '</p>' + '</li>' + '</ul>'
-}
-
-console.log(prod);
-
-
-//Creo tomo el Id de los div para cada tipo de producto en el html.
-const porc = document.getElementById('prod1');
-const porc1 = document.getElementById('prod2');
-const porc2 = document.getElementById('prod3');
-const porc3 = document.getElementById('prod4');
-
-
-//Creo la funcion para sacar el porcentaje de productos segun el tipo.
-function sacarPorcentaje() {
-    let contador = 0;
-    let contador2 = 0;
-    let contador3 = 0;
-    let contador1 = 0;
-
-    for (i = 0; i < productos.length; i++) {
-
-        console.log(productos[i].tipo);
-
-        if (productos[i].tipo == "Comida") {
+    productos.forEach(function (p) {
+        if (p.tipo == "Comida") {
             contador++;
-        } else if (productos[i].tipo == "Tecnologia") {
+        } else if (p.tipo == "Tecnologia") {
             contador1++;
-        } else if (productos[i].tipo == "Inmuebles") {
+        } else if (p.tipo == "Inmueble") {
             contador2++;
-        } else if (productos[i].tipo == "Otros") {
+        } else if (p.tipo == "Otros") {
             contador3++;
         }
+    });
 
-    }
+    console.log(contador, contador1, contador2, contador3);
 
+    const porc = document.getElementById('prod1');
+    const porc1 = document.getElementById('prod2');
+    const porc2 = document.getElementById('prod3');
+    const porc3 = document.getElementById('prod4');
+
+    //hago el calculo para sacar el porcentaje del tipo de cada producto.
     if (contador > 0) {
-        porc.innerHTML += '<h3>'+ ((contador / productos.length) * 100).toFixed(2) + '%' + '</h3>';
+        porc.innerHTML = '<h3>' + ((contador / productos.length) * 100).toFixed(2) + '%' + '</h3>';
     }
 
     if (contador1 > 0) {
-        porc1.innerHTML += '<h3>' +   ((contador1 / productos.length) * 100).toFixed(2) + '%' + '</h3>';
+        porc1.innerHTML = '<h3>' + ((contador1 / productos.length) * 100).toFixed(2) + '%' + '</h3>';
     }
 
     if (contador2 > 0) {
-        porc2.innerHTML += '<h3>' + ((contador2 / productos.length) * 100).toFixed(2) + '%' + '</h3>';
+        porc2.innerHTML = '<h3>' + ((contador2 / productos.length) * 100).toFixed(2) + '%' + '</h3>';
     }
-    
+
     if (contador3 > 0) {
-        porc3.innerHTML += '<h3>' +  ((contador3 / productos.length) * 100).toFixed(2) + '%' + '</h3>';
+        porc3.innerHTML = '<h3>' + ((contador3 / productos.length) * 100).toFixed(2) + '%' + '</h3>';
+
     }
+
+    //vuelvo los contadores a 0 para cada vez que se agregue un producto no sume los valores anteriores.
+    contador1 = 0;
+    contador = 0;
+    contador2 = 0;
+    contador3 = 0;
 
 }
 
+//Creo una funcion para renderizar la pagina cada vez que se elimina un producto.
+const render = () => {
+    const cant = document.getElementById('mostrar-productos');
 
-//Llamo la funcion que saca el porcentaje de los tipos de productos.
-sacarPorcentaje();
+    //hago un mapeo del array productos e inserto el codigo al HTML para crear el cuadro del producto.
+    const cantTemplate = productos.map(p => '<div class="producto">' + '<ul>' +
+        '<li>' + '<h5>' + "TIPO DE PRODUCTO: " + '</h5>' + '<p>' + p.tipo + '</p>' + '</li>' +
+        '<li>' + '<h5>' + "NOMBRE: " + '</h5>' + '<p>' + p.nombre + '</p>' + '</li>' +
+        '<li>' + '<h5>' + "PRECIO: " + '</h5>' + '<p>' + " $" + p.precio + '</p>' + '</li>' +
+        '<li>' + '<h5>' + "POSEE ENVIO: " + '</h5>' + '<p>' + p.envio + '</p>' + '</li>' + '</ul>' + '<button class="btn-eliminar"> ' + "Eliminar" + '</button>' + '</div>');
+    cant.innerHTML = cantTemplate.join('');
 
+    //genero dos arrays donde estan los productos.
+    const eli = document.querySelectorAll('.btn-eliminar');
+    const eliminar = document.querySelectorAll('.producto');
 
+    //llamo donde se van a colocar los porcentajes para pasarlos a 0 y actualizarlos
+    //cuando se elimina un producto.
+    const porc = document.getElementById('prod1');
+    const porc1 = document.getElementById('prod2');
+    const porc2 = document.getElementById('prod3');
+    const porc3 = document.getElementById('prod4');
+
+    //hago un foreach donde se almacenan los productos y poder eliminar el selecionado a travez de un evento 'Click'.
+    eli.forEach((e, i) => {
+        e.addEventListener('click', () => {
+            console.log(e, i);
+            eliminar[i].parentNode.removeChild(eliminar[i]);
+            productos.splice(i, 1);
+
+            //paso a 0 los porcentajes.
+            porc.innerHTML = "";
+            porc1.innerHTML = "";
+            porc2.innerHTML = "";
+            porc3.innerHTML = "";
+            //llamo de nuevo la funcion para sacar nuevamente los pocentajes.
+            porcentaje();
+
+            render();
+        })
+    });
+}
+
+//creo un formulario para tomar los datos y asi crear productos dentro de window.onload para esperar que se cargue todo.
+window.onload = () => {
+    const form = document.getElementById('form');
+
+    form.onsubmit = (e) => {
+
+        e.preventDefault();
+
+        let tipo = '';
+
+        const tipoComida = document.getElementById('Comida');
+        const tipoTecnologia = document.getElementById('Tecnologia');
+        const tipoInmueble = document.getElementById('Inmueble');
+        const tipoOtros = document.getElementById('Otros');
+
+        //valido que esta marcado, en caso que no se marque nada, Default es 'Otros'.
+        if (tipoComida.checked) {
+            tipo = tipoComida.value;
+        } else if (tipoTecnologia.checked) {
+            tipo = tipoTecnologia.value;
+        } else if (tipoInmueble.checked) {
+            tipo = tipoInmueble.value;
+        } else {
+            tipo = tipoOtros.value;
+        }
+
+        //asigno el valor que ingreso por el input al nombre, al precio y envio.
+        const nombre = document.getElementById("nombre");
+        const nombreValor = nombre.value;
+        nombre.value = '';
+
+        const precio = document.getElementById("precio");
+        const precioValor = precio.value;
+        precio.value = 0;
+
+        const envioSi = document.getElementById("envioSi");
+        const envioNo = document.getElementById('envioNo');
+
+        if (envioSi.checked) {
+            envio = envioSi.value;
+        } else {
+            envio = envioNo.value;
+        }
+
+        //creo y hago push del producto al array vacio que tenia.
+        const produc = new producto(tipo, nombreValor, precioValor, envio);
+
+        productos.push(produc);
+
+        console.log(productos.length);
+
+        //llamo la funcion para imprimir porcentajes.
+        porcentaje();
+
+        //llamo la funcion de renderizar la pagina.
+        render();
+    }
+
+}

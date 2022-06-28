@@ -15,27 +15,58 @@
         <h1>NDP MARKET</h1>
     </header>
 
-    <h1>Tus productos</h1>
-
     <main id="container">
+        <div id="formulario">
+            <h1>Agrega tu producto</h1>
+            <form action="" id="form">
+
+                <div class="form-tipo">
+                    <label for="tip">Tipo:</label>
+                    <input type="radio" value="Comida" id="Comida" name="tip"> Comida
+                    <input type="radio" value="Tecnologia" id="Tecnologia" name="tip">Tecnologia
+                    <input type="radio" value="Inmueble" id="Inmueble" name="tip">Inmueble
+                    <input type="radio" value="Otros" id="Otros" name="tip">Otros
+                </div>
+                <div class="form-nombre">
+                    <label for="nombre">Nombre o marca:</label>
+                    <input type="text" id="nombre" placeholder="nombre..." required>
+                    <label for="precio">Precio: $</label>
+                    <input type="number" id="precio" placeholder="precio..." required>
+                </div>
+
+                <div class="form-envio">
+                    <label for="env">Posee envio?</label>
+                    <input type="radio" id="envioSi" value="Si" name="env">Si
+                    <input type="radio" id="envioNo" value="No" name="env">No
+                </div>
+
+                <input type="submit" value="Crear" class="boton">
+            </form>
+        </div>
+        <h1>Tus productos</h1>
         <div id="mostrar-productos"></div>
 
         <h1>Porcentaje de tus productos.</h1>
 
         <div id="porcentaje-productos">
 
-            <div id="prod1" class="prodStyle">
+            <div class="prodStyle">
                 <h2>COMIDA</h2>
+                <h2 id="prod1"></h2>
             </div>
-            <div id="prod2" class="prodStyle">
+            <div class="prodStyle">
                 <h2>TECNO</h2>
+                <h2 id="prod2"></h2>
             </div>
-            <div id="prod3" class="prodStyle">
+            <div class="prodStyle">
                 <h2>INMUEBLES</h2>
+                <h2 id="prod3"></h2>
             </div>
-            <div id="prod4" class="prodStyle">
+            <div class="prodStyle">
                 <h2>OTROS</h2>
+                <h2 id="prod4"></h2>
             </div>
+
         </div>
 
     </main>
