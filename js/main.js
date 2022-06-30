@@ -9,8 +9,8 @@ class producto {
     }
 }
 
-let productos = [];
 //Agrego contadores para sacar el porcentaje de los tipos de productos que tengo.
+const cont = [];
 let contador = 0;
 let contador2 = 0;
 let contador3 = 0;
@@ -20,13 +20,13 @@ let contador1 = 0;
 function porcentaje() {
 
     productos.forEach(function (p) {
-        if (p.tipo == "Comida") {
+        if (p.tipo == "comida") {
             contador++;
-        } else if (p.tipo == "Tecnologia") {
+        } else if (p.tipo == "tecnologia") {
             contador1++;
-        } else if (p.tipo == "Inmueble") {
+        } else if (p.tipo == "inmueble") {
             contador2++;
-        } else if (p.tipo == "Otros") {
+        } else if (p.tipo == "otros") {
             contador3++;
         }
     });
@@ -40,18 +40,22 @@ function porcentaje() {
 
     //hago el calculo para sacar el porcentaje del tipo de cada producto.
     if (contador > 0) {
+        cont.push(contador);
         porc.innerHTML = '<h3>' + ((contador / productos.length) * 100).toFixed(2) + '%' + '</h3>';
     }
 
     if (contador1 > 0) {
+        cont.push(contador1);
         porc1.innerHTML = '<h3>' + ((contador1 / productos.length) * 100).toFixed(2) + '%' + '</h3>';
     }
 
     if (contador2 > 0) {
+        cont.push(contador2);
         porc2.innerHTML = '<h3>' + ((contador2 / productos.length) * 100).toFixed(2) + '%' + '</h3>';
     }
 
     if (contador3 > 0) {
+        cont.push(contador3);
         porc3.innerHTML = '<h3>' + ((contador3 / productos.length) * 100).toFixed(2) + '%' + '</h3>';
 
     }
@@ -61,21 +65,24 @@ function porcentaje() {
     contador = 0;
     contador2 = 0;
     contador3 = 0;
-
 }
+
+const productos = JSON.parse(localStorage.getItem('productos')) || [];
 
 //Creo una funcion para renderizar la pagina cada vez que se elimina un producto.
 const render = () => {
     const cant = document.getElementById('mostrar-productos');
 
     //hago un mapeo del array productos e inserto el codigo al HTML para crear el cuadro del producto.
-    const cantTemplate = productos.map(p => '<div class="producto">' + '<ul>' +
+    const cantTemplate = productos.map(p => '<div class="producto">' + '<ul >' +
         '<li>' + '<h5>' + "TIPO DE PRODUCTO: " + '</h5>' + '<p>' + p.tipo + '</p>' + '</li>' +
         '<li>' + '<h5>' + "NOMBRE: " + '</h5>' + '<p>' + p.nombre + '</p>' + '</li>' +
         '<li>' + '<h5>' + "PRECIO: " + '</h5>' + '<p>' + " $" + p.precio + '</p>' + '</li>' +
-        '<li>' + '<h5>' + "POSEE ENVIO: " + '</h5>' + '<p>' + p.envio + '</p>' + '</li>' + '</ul>' + '<button class="btn-eliminar"> ' + "Eliminar" + '</button>' + '</div>');
+        '<li>' + '<h5>' + "POSEE ENVIO: " + '</h5>' + '<p>' + p.envio + '</p>' + '</li>' + '</ul>' + '<button class="btn-eliminar btn btn-primary fs-3 mw-50 align-self-center mb-2"> ' + "Eliminar" + '</button>' + '</div>');
+        
     cant.innerHTML = cantTemplate.join('');
 
+    console.log(productos.tipo);
     //genero dos arrays donde estan los productos.
     const eli = document.querySelectorAll('.btn-eliminar');
     const eliminar = document.querySelectorAll('.producto');
@@ -94,6 +101,9 @@ const render = () => {
             eliminar[i].parentNode.removeChild(eliminar[i]);
             productos.splice(i, 1);
 
+            //llamo la funcion para almacenar y actualizar los productos en el local storage.
+            actualizaProdcutos(productos);
+
             //paso a 0 los porcentajes.
             porc.innerHTML = "";
             porc1.innerHTML = "";
@@ -107,8 +117,15 @@ const render = () => {
     });
 }
 
+//Para no repetir codigo creo una funcion para actualizar, pasarlos a string los productos y setearlos en localStorage.
+const actualizaProdcutos = (productos) => {
+    const prodString = JSON.stringify(productos);
+    localStorage.setItem('productos', prodString);
+}
+
 //creo un formulario para tomar los datos y asi crear productos dentro de window.onload para esperar que se cargue todo.
 window.onload = () => {
+    render();
     const form = document.getElementById('form');
 
     form.onsubmit = (e) => {
@@ -117,10 +134,10 @@ window.onload = () => {
 
         let tipo = '';
 
-        const tipoComida = document.getElementById('Comida');
-        const tipoTecnologia = document.getElementById('Tecnologia');
-        const tipoInmueble = document.getElementById('Inmueble');
-        const tipoOtros = document.getElementById('Otros');
+        const tipoComida = document.getElementById('comida');
+        const tipoTecnologia = document.getElementById('tecnologia');
+        const tipoInmueble = document.getElementById('inmueble');
+        const tipoOtros = document.getElementById('otros');
 
         //valido que esta marcado, en caso que no se marque nada, Default es 'Otros'.
         if (tipoComida.checked) {
@@ -155,8 +172,9 @@ window.onload = () => {
         const produc = new producto(tipo, nombreValor, precioValor, envio);
 
         productos.push(produc);
-
-        console.log(productos.length);
+        
+        //llamo la funcion para almacenar y actualizar los productos en el local storage.
+        actualizaProdcutos(productos);
 
         //llamo la funcion para imprimir porcentajes.
         porcentaje();

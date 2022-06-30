@@ -45,7 +45,6 @@ body{
     flex-direction: column;
     flex-wrap: wrap;
     row-gap: 15px;
-    color: #007bff;
     width: 60%;
     margin: auto;
     margin-top: 30px;
@@ -53,59 +52,6 @@ body{
     min-height: 200px;
     justify-content: space-evenly;
     border: 1px solid #007bff;
-}
-   
-.form-tipo {
-    max-width: 80%;
-    align-self: center;
-    color: #ccc;
-    font-size: 20px;
-}
-.form-tipo label{
-    color: #007bff;
-    font-size: 28px;
-}
-.form-tipo input{
-    margin-left: 15px;
-}
-
-.form-nombre {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    align-self: center;
-    color: #ccc;
-    font-size: 25px;
-}
-.form-nombre label{
-    align-self: center;
-    color: #007bff;
-    font-size: 28px;
-}
-.form-nombre input{
-    height: 25px;
-}
-.form-envio {
-    align-self: center;
-    color: #ccc;
-    font-size: 25px;
-}
-.form-envio label{
-    align-self: center;
-    color: #007bff;
-    font-size: 28px;
-}
-
-.boton {
-    color: white;
-    font-size: 20px;
-    background-color: #007bff;
-    align-self: center;
-    height: 30px;
-    min-width: 20%;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    border: none;
 }
 
 /* ---------MUESTRA DE PRODUCTOS----------- */
@@ -129,8 +75,8 @@ h1{
 }
 
 .producto{
-    width: 20%;
-    height: 200px;
+    min-width: 15%;
+    min-height: 200px;
     background-color: rgb(214, 214, 214);
     border: 1px solid #007bff;
     border-radius: 5px;
@@ -240,6 +186,9 @@ h1{
 
 /* PHONE */
 @media screen and (max-width: 480px) {
+    #form{
+        width: 95%;
+    }
     .producto{
         width: 70%;
     }

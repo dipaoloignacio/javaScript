@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
@@ -19,31 +21,63 @@
         <div id="formulario">
             <h1>Agrega tu producto</h1>
             <form action="" id="form">
-
-                <div class="form-tipo">
-                    <label for="tip">Tipo:</label>
-                    <input type="radio" value="Comida" id="Comida" name="tip"> Comida
-                    <input type="radio" value="Tecnologia" id="Tecnologia" name="tip">Tecnologia
-                    <input type="radio" value="Inmueble" id="Inmueble" name="tip">Inmueble
-                    <input type="radio" value="Otros" id="Otros" name="tip">Otros
+                <h2 class="align-self-center text-primary ">Tipo</h2>
+                <div class="d-flex flex-wrap justify-content-evenly text-light">
+                    <div class="form-check">
+                        <label class="form-check-label fs-5" for="flexRadioDefault">
+                            Comida
+                            <input class="form-check-input " type="radio" name="flexRadioDefault" value="comida" id="comida">
+                        </label>
+                    </div>
+                    <div class="form-check ms-3">
+                        <label class="form-check-label fs-5" for="flexRadioDefault1">
+                            Tecnologia
+                            <input class="form-check-input" type="radio" value="tecnologia" name="flexRadioDefault" id="tecnologia">
+                        </label>
+                    </div>
+                    <div class="form-check ms-3">
+                        <label class="form-check-label fs-5" for="flexRadioDefault1">
+                            Inmueble
+                            <input class="form-check-input" type="radio" value="inmueble" name="flexRadioDefault" id="inmueble">
+                        </label>
+                    </div>
+                    <div class="form-check ms-3">
+                        <label class="form-check-label fs-5" for="flexRadioDefault1">
+                            Otros
+                            <input class="form-check-input" type="radio" value="otros" name="flexRadioDefault" id="otros">
+                        </label>
+                    </div>
                 </div>
-                <div class="form-nombre">
-                    <label for="nombre">Nombre o marca:</label>
-                    <input type="text" id="nombre" placeholder="nombre..." required>
-                    <label for="precio">Precio: $</label>
-                    <input type="number" id="precio" placeholder="precio..." required>
+
+                <h3 class="text-primary align-self-center">Marca</h3>
+                <div class="input-group align-self-center w-50">
+                    <input type="text" id="nombre" class="form-control" placeholder="Nombre" aria-label="Username"
+                        aria-describedby="basic-addon1" required>
                 </div>
 
-                <div class="form-envio">
-                    <label for="env">Posee envio?</label>
-                    <input type="radio" id="envioSi" value="Si" name="env">Si
-                    <input type="radio" id="envioNo" value="No" name="env">No
+                <h3 class="text-primary align-self-center">Precio </h3>
+                <div class="input-group w-50 align-self-center">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control" id="precio" aria-label="Amount (to the nearest dollar)"
+                        required>
+                    <span class="input-group-text">.00</span>
                 </div>
-
-                <input type="submit" value="Crear" class="boton">
+                
+                <h3 class="text-primary align-self-center">Posee envio?</h3>
+                <div class="form-check ms-3 align-self-center">
+                    <label class="form-check-label text-light fs-5" for="flexRadioDefault1">
+                        <input class="form-check-input " type="radio" name="asd" id="envioSi" value="Si">Si
+                    </label>
+                    <label class="form-check-label text-light fs-5 ms-5" for="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="asd" id="envioNo" value="No">No
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary fs-3 mw-50 align-self-center mb-2">Crear</button>
             </form>
         </div>
+        
         <h1>Tus productos</h1>
+
         <div id="mostrar-productos"></div>
 
         <h1>Porcentaje de tus productos.</h1>
@@ -75,7 +109,10 @@
         <p>NDP MARKET BY NACHO...</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
 </body>
-<script src="js/main.js"></script>
 
 </html>
