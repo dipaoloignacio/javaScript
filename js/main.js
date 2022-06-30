@@ -183,4 +183,6 @@ window.onload = () => {
         render();
     }
 
+    //llamo la funcion para imprimir porcentajes.
+    porcentaje();
 }
