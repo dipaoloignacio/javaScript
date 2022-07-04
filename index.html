@@ -14,34 +14,34 @@
 <body>
 
     <header class="header">
-        <h1>NDP MARKET</h1>
+        <h1 id="title-header">NDP MARKET</h1>
     </header>
 
     <main id="container">
         <div id="formulario">
-            <h1>Agrega tu producto</h1>
             <form action="" id="form">
-                <h2 class="align-self-center text-primary ">Tipo</h2>
-                <div class="d-flex flex-wrap align-self-center justify-content-around w-50 text-light">
-                    <div class="form-check">
+                <h1 id="title-form">Agrega tu producto</h1>
+                <div class="d-flex flex-wrap align-self-center justify-content-around w-50 text-light" style="column-gap: 10px;">
+                    <h2 class="align-self-center text-primary ">Tipo:</h2>
+                    <div class="form-check align-self-end">
                         <label class="form-check-label fs-5" for="flexRadioDefault">
                             Comida
                             <input class="form-check-input " type="radio" name="flexRadioDefault" value="comida" id="comida">
                         </label>
                     </div>
-                    <div class="form-check ms-3">
-                        <label class="form-check-label fs-5" for="flexRadioDefault1">
+                    <div class="form-check align-self-end">
+                        <label class="form-check-label fs-5 " for="flexRadioDefault1">
                             Tecnologia
                             <input class="form-check-input" type="radio" value="tecnologia" name="flexRadioDefault" id="tecnologia">
                         </label>
                     </div>
-                    <div class="form-check ms-3">
+                    <div class="form-check align-self-end">
                         <label class="form-check-label fs-5" for="flexRadioDefault1">
                             Inmueble
                             <input class="form-check-input" type="radio" value="inmueble" name="flexRadioDefault" id="inmueble">
                         </label>
                     </div>
-                    <div class="form-check ms-3">
+                    <div class="form-check align-self-end">
                         <label class="form-check-label fs-5" for="flexRadioDefault1">
                             Otros (default)
                             <input class="form-check-input" type="radio" value="otros" name="flexRadioDefault" id="otros">
@@ -49,23 +49,23 @@
                     </div>
                 </div>
 
-                <h3 class="text-primary align-self-center">Marca</h3>
                 <div class="input-group align-self-center w-50">
-                    <input type="text" id="nombre" class="form-control" placeholder="Nombre" aria-label="Username"
+                    <h3 class="text-primary align-self-center">Marca: </h3>
+                    <input type="text" id="nombre" class="form-control ms-3" placeholder="Nombre" aria-label="Username"
                         aria-describedby="basic-addon1" required>
                 </div>
 
-                <h3 class="text-primary align-self-center">Precio </h3>
                 <div class="input-group w-50 align-self-center">
-                    <span class="input-group-text">$</span>
-                    <input type="number" class="form-control" id="precio" aria-label="Amount (to the nearest dollar)"
+                    <h3 class="text-primary align-self-center">Precio: </h3>
+                    <span class="input-group-text ms-3">$</span>
+                    <input type="number" class="form-control " id="precio" aria-label="Amount (to the nearest dollar)"
                         required>
                     <span class="input-group-text">.00</span>
                 </div>
                 
-                <h3 class="text-primary align-self-center">Posee envio?</h3>
-                <div class="form-check ms-3 align-self-center">
-                    <label class="form-check-label text-light fs-5" for="flexRadioDefault1">
+                <div class=" d-flex form-check ms-3 align-self-center">
+                    <h3 class="text-primary">Posee envio?</h3>
+                    <label class="form-check-label text-light fs-5 ms-5" for="flexRadioDefault1">
                         <input class="form-check-input " type="radio" name="asd" id="envioSi" value="Si">Si
                     </label>
                     <label class="form-check-label text-light fs-5 ms-5" for="flexRadioDefault1">
@@ -80,7 +80,7 @@
 
         <div id="mostrar-productos"></div>
 
-        <h1>Porcentaje de tus productos.</h1>
+        <h1 id="title-porcentajes">Porcentaje de tus productos.</h1>
 
         <div id="porcentaje-productos">
 

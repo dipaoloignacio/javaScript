@@ -10,7 +10,6 @@ class producto {
 }
 
 //Agrego contadores para sacar el porcentaje de los tipos de productos que tengo.
-const cont = [];
 let contador = 0;
 let contador2 = 0;
 let contador3 = 0;
@@ -38,26 +37,22 @@ function porcentaje() {
     const porc2 = document.getElementById('prod3');
     const porc3 = document.getElementById('prod4');
 
+    function sacarPorcentaje(num) {
+        return ((num / productos.length) * 100).toFixed(0);
+    }
+
     //hago el calculo para sacar el porcentaje del tipo de cada producto.
     if (contador > 0) {
-        cont.push(contador);
-        porc.innerHTML = '<h3>' + ((contador / productos.length) * 100).toFixed(2) + '%' + '</h3>';
+        porc.innerHTML = '<h3>' + sacarPorcentaje(contador) + '%' + '</h3>';
     }
-
     if (contador1 > 0) {
-        cont.push(contador1);
-        porc1.innerHTML = '<h3>' + ((contador1 / productos.length) * 100).toFixed(2) + '%' + '</h3>';
+        porc1.innerHTML = '<h3>' + sacarPorcentaje(contador1) + '%' + '</h3>';
     }
-
     if (contador2 > 0) {
-        cont.push(contador2);
-        porc2.innerHTML = '<h3>' + ((contador2 / productos.length) * 100).toFixed(2) + '%' + '</h3>';
+        porc2.innerHTML = '<h3>' + sacarPorcentaje(contador2) + '%' + '</h3>';
     }
-
     if (contador3 > 0) {
-        cont.push(contador3);
-        porc3.innerHTML = '<h3>' + ((contador3 / productos.length) * 100).toFixed(2) + '%' + '</h3>';
-
+        porc3.innerHTML = '<h3>' + sacarPorcentaje(contador3) + '%' + '</h3>';
     }
 
     //vuelvo los contadores a 0 para cada vez que se agregue un producto no sume los valores anteriores.
@@ -74,12 +69,12 @@ const render = () => {
     const cant = document.getElementById('mostrar-productos');
 
     //hago un mapeo del array productos e inserto el codigo al HTML para crear el cuadro del producto.
-    const cantTemplate = productos.map(p => '<div class="producto">' + '<ul >' +
-        '<li>' + '<h5>' + "TIPO DE PRODUCTO: " + '</h5>' + '<p>' + p.tipo + '</p>' + '</li>' +
-        '<li>' + '<h5>' + "NOMBRE: " + '</h5>' + '<p>' + p.nombre + '</p>' + '</li>' +
-        '<li>' + '<h5>' + "PRECIO: " + '</h5>' + '<p>' + " $" + p.precio + '</p>' + '</li>' +
-        '<li>' + '<h5>' + "POSEE ENVIO: " + '</h5>' + '<p>' + p.envio + '</p>' + '</li>' + '</ul>' + '<button class="btn-eliminar btn btn-primary fs-3 mw-50 align-self-center mb-2"> ' + "Eliminar" + '</button>' + '</div>');
-        
+    const cantTemplate = productos.map(p => '<div class="producto">' + '<ul class="list-group list-group-flush">' +
+        '<li class="list-group-item">' + '<h5>' + "TIPO DE PRODUCTO: " + '</h5>' + '<p>' + p.tipo + '</p>' + '</li>' +
+        '<li class="list-group-item">' + '<h5>' + "NOMBRE: " + '</h5>' + '<p>' + p.nombre + '</p>' + '</li>' +
+        '<li class="list-group-item">' + '<h5>' + "PRECIO: " + '</h5>' + '<p>' + " $" + p.precio + '</p>' + '</li>' +
+        '<li class="list-group-item">' + '<h5>' + "POSEE ENVIO: " + '</h5>' + '<p>' + p.envio + '</p>' + '</li>' + '</ul>' + '<button class="btn-eliminar btn btn-primary fs-3 mw-50 align-self-center mb-2"> ' + "Eliminar" + '</button>' + '</div>');
+
     cant.innerHTML = cantTemplate.join('');
 
     console.log(productos.tipo);
@@ -172,11 +167,11 @@ window.onload = () => {
         const produc = new producto(tipo, nombreValor, precioValor, envio);
 
         productos.push(produc);
-        
+
         //llamo la funcion para almacenar y actualizar los productos en el local storage.
         actualizaProdcutos(productos);
 
-        //llamo la funcion para imprimir porcentajes.
+        //llamo la funcion para imprimir porcentajes cuando se crea un producto.
         porcentaje();
 
         //llamo la funcion de renderizar la pagina.
