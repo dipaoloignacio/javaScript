@@ -20,9 +20,6 @@ body{
     display: flex;
     max-width: 100%;
     min-height: 200px;
-    border-bottom: 1px solid #007bff;
-    box-shadow: 1px 1px 2px #007bff;
-    padding: 15px;
     justify-content: center;
     align-items: center;
 }
@@ -35,9 +32,7 @@ body{
     font-size: 80px;
 }
 /* ------------Container o main----------- */
-#container{
-    margin-top: 50px;
-}
+
 
 /* -------FORMULARIO---------- */
 #form {
@@ -45,28 +40,28 @@ body{
     flex-direction: column;
     flex-wrap: wrap;
     row-gap: 15px;
-    width: 60%;
+    width: 100%;
     margin: auto;
-    margin-top: 30px;
-    border-radius: 10px;
+    border-bottom: #007bff solid 1px;
     min-height: 200px;
     justify-content: space-evenly;
-    border: 1px solid #007bff;
 }
 
 /* ---------MUESTRA DE PRODUCTOS----------- */
 #mostrar-productos{
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    max-width: 100%;
+    margin: auto;
+    gap: 5px;
     align-items: center;
     justify-content: center;
+    border-bottom: #007bff solid 1px;
     row-gap: 20px;
 }
 
 #title-form{
     text-align: center;
-    text-decoration: underline 1px;
     color: #007bff;
 }
 #container h1{
@@ -78,11 +73,13 @@ body{
 .producto{
     min-width: 15%;
     min-height: 200px;
+    margin-bottom: 5px;
     background-color: rgb(214, 214, 214);
     border: 1px solid #007bff;
     border-radius: 5px;
     text-align: center;
     color: #007bff;
+
 }
 .producto h5{
     align-self: center;
@@ -136,6 +133,11 @@ body{
 #porcentaje-productos h3{
     max-width: 90%;
     color: #007bff;
+}
+#subir{
+    color: white;
+    text-align: center;
+    font-size: 100px;
 }
 
 /* -------------Footer------------ */

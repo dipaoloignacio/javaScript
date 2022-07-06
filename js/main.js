@@ -119,10 +119,15 @@ const actualizaProdcutos = (productos) => {
 }
 
 //creo un formulario para tomar los datos y asi crear productos dentro de window.onload para esperar que se cargue todo.
+
 window.onload = () => {
     render();
     const form = document.getElementById('form');
 
+    const elevator = new Elevator({
+        element: document.querySelector('#subir'),
+        duration: 1000 // milliseconds
+      });
     form.onsubmit = (e) => {
 
         e.preventDefault();
@@ -176,6 +181,7 @@ window.onload = () => {
 
         //llamo la funcion de renderizar la pagina.
         render();
+
     }
 
     //llamo la funcion para imprimir porcentajes.
