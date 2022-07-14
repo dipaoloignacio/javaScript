@@ -1,189 +1,132 @@
 //MARKET.
-//Creo el Objeto de los productos .
-class producto {
-    constructor(tipo, nombre, precio, envio) {
-        this.tipo = tipo;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.envio = envio;
-    }
+//Creo un formulario en una constante para agregarlo al html.
+const formularioProductos = () => {
+    const formProducto = `
+            <form action="" id="form">
+                <h1 id="title-form">Agrega tus productos</h1>
+                <div class="d-flex flex-wrap align-self-center justify-content-around w-50 text-light"
+                    style="column-gap: 10px;">
+                    <h2 class="align-self-center text-primary ">Tipo:</h2>
+                    <div class="form-check align-self-end">
+                        <label class="form-check-label fs-5" for="tipo">
+                            Comida
+                            <input required class="form-check-input " type="radio" name="tipo" value="comida"
+                                id="comida">
+                        </label>
+                    </div>
+                    <div class="form-check align-self-end">
+                        <label class="form-check-label fs-5 " for="tipo">
+                            Tecnologia
+                            <input class="form-check-input" type="radio" value="tecnologia" name="tipo"
+                                id="tecnologia">
+                        </label>
+                    </div>
+                    <div class="form-check align-self-end">
+                        <label class="form-check-label fs-5" for="tipo">
+                            Inmueble
+                            <input class="form-check-input" type="radio" value="inmueble" name="tipo"
+                                id="inmueble">
+                        </label>
+                    </div>
+                    <div class="form-check align-self-end">
+                        <label class="form-check-label fs-5" for="tipo">
+                            Otros (default)
+                            <input class="form-check-input" type="radio" value="otros" name="tipo"
+                                id="otros">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="input-group align-self-center w-50" for="nombre">
+                    <input type="text" id="nombre" name="nombre" class="form-control ms-3" placeholder="Nombre..."
+                        aria-label="Username" aria-describedby="basic-addon1" required>
+                </div>
+
+                <div class="input-group w-50 align-self-center">
+                    <span class="input-group-text ms-3">$</span>
+                    <input type="number" name="precio" class="form-control " id="precio" placeholder="Precio..."
+                        aria-label="Amount (to the nearest dollar)" required>
+                    <span class="input-group-text">.00</span>
+                </div>
+
+                <div class=" d-flex form-check ms-3 align-self-center">
+                    <h3 class="text-primary">Posee envio?</h3>
+                    <label class="form-check-label text-light fs-5 ms-5" for="flexRadioDefault1">
+                        <input class="form-check-input " type="radio" name="envio" id="envioSi" value="Si">Si
+                    </label>
+                    <label class="form-check-label text-light fs-5 ms-5" for="flexRadioDefault1">
+                        <input required class="form-check-input" type="radio" name="envio" id="envioNo" value="No">No (default)
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary fs-3 mw-50 align-self-center mb-2">Agregar</button>
+            </form>
+        `
+    const body = document.getElementById('formulario');
+    //agrego el formulario al html.
+    body.innerHTML = formProducto;
 }
 
-//Agrego contadores para sacar el porcentaje de los tipos de productos que tengo.
-let contador = 0;
-let contador2 = 0;
-let contador3 = 0;
-let contador1 = 0;
-
-//Funcion para sacar los porcentajes de productos.
-function porcentaje() {
-
-    productos.forEach(function (p) {
-        if (p.tipo == "comida") {
-            contador++;
-        } else if (p.tipo == "tecnologia") {
-            contador1++;
-        } else if (p.tipo == "inmueble") {
-            contador2++;
-        } else if (p.tipo == "otros") {
-            contador3++;
-        }
-    });
-
-    console.log(contador, contador1, contador2, contador3);
-
-    const porc = document.getElementById('prod1');
-    const porc1 = document.getElementById('prod2');
-    const porc2 = document.getElementById('prod3');
-    const porc3 = document.getElementById('prod4');
-
-    function sacarPorcentaje(num) {
-        return ((num / productos.length) * 100).toFixed(0);
-    }
-
-    //hago el calculo para sacar el porcentaje del tipo de cada producto.
-    if (contador > 0) {
-        porc.innerHTML = '<h3>' + sacarPorcentaje(contador) + '%' + '</h3>';
-    }
-    if (contador1 > 0) {
-        porc1.innerHTML = '<h3>' + sacarPorcentaje(contador1) + '%' + '</h3>';
-    }
-    if (contador2 > 0) {
-        porc2.innerHTML = '<h3>' + sacarPorcentaje(contador2) + '%' + '</h3>';
-    }
-    if (contador3 > 0) {
-        porc3.innerHTML = '<h3>' + sacarPorcentaje(contador3) + '%' + '</h3>';
-    }
-
-    //vuelvo los contadores a 0 para cada vez que se agregue un producto no sume los valores anteriores.
-    contador1 = 0;
-    contador = 0;
-    contador2 = 0;
-    contador3 = 0;
-}
-
-const productos = JSON.parse(localStorage.getItem('productos')) || [];
-
-//Creo una funcion para renderizar la pagina cada vez que se elimina un producto.
-const render = () => {
-    const cant = document.getElementById('mostrar-productos');
-
-    //hago un mapeo del array productos e inserto el codigo al HTML para crear el cuadro del producto.
-    const cantTemplate = productos.map(p => '<div class="producto">' + '<ul class="list-group list-group-flush">' +
-        '<li class="list-group-item">' + '<h5>' + "TIPO DE PRODUCTO: " + '</h5>' + '<p>' + p.tipo + '</p>' + '</li>' +
-        '<li class="list-group-item">' + '<h5>' + "NOMBRE: " + '</h5>' + '<p>' + p.nombre + '</p>' + '</li>' +
-        '<li class="list-group-item">' + '<h5>' + "PRECIO: " + '</h5>' + '<p>' + " $" + p.precio + '</p>' + '</li>' +
-        '<li class="list-group-item">' + '<h5>' + "POSEE ENVIO: " + '</h5>' + '<p>' + p.envio + '</p>' + '</li>' + '</ul>' + '<button class="btn-eliminar btn btn-primary fs-3 mw-50 align-self-center mb-2"> ' + "Eliminar" + '</button>' + '</div>');
-
-    cant.innerHTML = cantTemplate.join('');
-
-    console.log(productos.tipo);
-    //genero dos arrays donde estan los productos.
-    const eli = document.querySelectorAll('.btn-eliminar');
-    const eliminar = document.querySelectorAll('.producto');
-
-    //llamo donde se van a colocar los porcentajes para pasarlos a 0 y actualizarlos
-    //cuando se elimina un producto.
-    const porc = document.getElementById('prod1');
-    const porc1 = document.getElementById('prod2');
-    const porc2 = document.getElementById('prod3');
-    const porc3 = document.getElementById('prod4');
-
-    //hago un foreach donde se almacenan los productos y poder eliminar el selecionado a travez de un evento 'Click'.
-    eli.forEach((e, i) => {
-        e.addEventListener('click', () => {
-            console.log(e, i);
-            eliminar[i].parentNode.removeChild(eliminar[i]);
-            productos.splice(i, 1);
-
-            //llamo la funcion para almacenar y actualizar los productos en el local storage.
-            actualizaProdcutos(productos);
-
-            //paso a 0 los porcentajes.
-            porc.innerHTML = "";
-            porc1.innerHTML = "";
-            porc2.innerHTML = "";
-            porc3.innerHTML = "";
-            //llamo de nuevo la funcion para sacar nuevamente los pocentajes.
-            porcentaje();
-
-            render();
+//genero una funcion asincronica para llamar los productos que tengo en la base de datos mediente un fetch y el metodo POST.
+const getProductos = async () => {
+    const response = await fetch('/productos')
+    //traigo los productos guardados y los paso a objeto js.
+    const productos = await response.json();
+    //genero el html para cargargar los productos.
+    const template = producto =>
+       `<div class="producto">
+            <ul class="list-group list-group-flush" id="productoLista">
+                <li class="list-group-item">  <h5>  TIPO DE PRODUCTO:</h5><p>${producto.tipo}</p></li>
+                <li class="list-group-item">  <h5>  NOMBRE: </h5><p>${producto.nombre} </p></li>
+                <li class="list-group-item">  <h5>  PRECIO:  </h5><p> ${producto.precio} </p></li>
+                <li class="list-group-item">  <h5> POSEE ENVIO: </h5> <p>${producto.envio} </p></li>
+            </ul><button class="btn-eliminar btn btn-primary fs-3 mw-50 align-self-center mb-2" data-id="${producto._id}"> Eliminar</button>
+        </div>`
+        //paso los productos a traves de un .map al html.
+        const productList = document.getElementById('mostrar-productos');
+        productList.innerHTML = productos.map(producto => template(producto)).join('')
+        //hago un foreach para tener accion en el btn de eliminar trayendo el id y mediante fetch y su id hago uso del metodo delete del producto.
+        productos.forEach(producto => {
+            const productoNode = document.querySelector(`[data-id="${producto._id}"]`);
+            //escucho el evento click para eliminar.
+            productoNode.onclick = async e => {
+                await fetch(`/productos/${producto._id}`,{
+                    method: 'DELETE',
+                })
+                productoNode.parentNode.remove();
+            }
         })
-    });
 }
 
-//Para no repetir codigo creo una funcion para actualizar, pasarlos a string los productos y setearlos en localStorage.
-const actualizaProdcutos = (productos) => {
-    const prodString = JSON.stringify(productos);
-    localStorage.setItem('productos', prodString);
+//Funcion para crear productos a traves del formulario.
+const addFormListener = () => {
+    const prodForm = document.getElementById('form');
+    prodForm.onsubmit = async (e) => {
+        e.preventDefault();
+        //busco los valores del formulario a traves de la funcion FormData.
+        const formData = new FormData(prodForm);
+        //lo transformo en objeto Json gracias ala funcion que proporciona FormData que es .entries().
+        const data = Object.fromEntries(formData.entries())
+        await fetch('/productos', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        prodForm.reset();
+        getProductos();
+    }
 }
-
-//creo un formulario para tomar los datos y asi crear productos dentro de window.onload para esperar que se cargue todo.
 
 window.onload = () => {
-    render();
-    const form = document.getElementById('form');
+    //ejecuto las funciones cuando se termina de cargar la pagina para crear, traer los productos.
+    formularioProductos();
+    addFormListener();
+    getProductos();
 
+    //funcion de una libreria para llevar a la cabecera la pagina.
     const elevator = new Elevator({
         element: document.querySelector('#subir'),
         duration: 1000 // milliseconds
-      });
-    form.onsubmit = (e) => {
-
-        e.preventDefault();
-
-        let tipo = '';
-
-        const tipoComida = document.getElementById('comida');
-        const tipoTecnologia = document.getElementById('tecnologia');
-        const tipoInmueble = document.getElementById('inmueble');
-        const tipoOtros = document.getElementById('otros');
-
-        //valido que esta marcado, en caso que no se marque nada, Default es 'Otros'.
-        if (tipoComida.checked) {
-            tipo = tipoComida.value;
-        } else if (tipoTecnologia.checked) {
-            tipo = tipoTecnologia.value;
-        } else if (tipoInmueble.checked) {
-            tipo = tipoInmueble.value;
-        } else {
-            tipo = tipoOtros.value;
-        }
-
-        //asigno el valor que ingreso por el input al nombre, al precio y envio.
-        const nombre = document.getElementById("nombre");
-        const nombreValor = nombre.value;
-        nombre.value = '';
-
-        const precio = document.getElementById("precio");
-        const precioValor = precio.value;
-        precio.value = 0;
-
-        const envioSi = document.getElementById("envioSi");
-        const envioNo = document.getElementById('envioNo');
-
-        if (envioSi.checked) {
-            envio = envioSi.value;
-        } else {
-            envio = envioNo.value;
-        }
-
-        //creo y hago push del producto al array vacio que tenia.
-        const produc = new producto(tipo, nombreValor, precioValor, envio);
-
-        productos.push(produc);
-
-        //llamo la funcion para almacenar y actualizar los productos en el local storage.
-        actualizaProdcutos(productos);
-
-        //llamo la funcion para imprimir porcentajes cuando se crea un producto.
-        porcentaje();
-
-        //llamo la funcion de renderizar la pagina.
-        render();
-
-    }
-
-    //llamo la funcion para imprimir porcentajes.
-    porcentaje();
+    });
 }

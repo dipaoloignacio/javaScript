@@ -2,7 +2,7 @@
 /* --------Fonts--------- */
 @font-face{
     font-family: 'finance';
-    src: url(../fonts/BLACK\ HIGHLIGHT.ttf);
+    src: url(BLACK\ HIGHLIGHT.ttf);
 }
 
 /* ----------General--------- */
@@ -51,7 +51,7 @@ body{
 #mostrar-productos{
     display: flex;
     flex-wrap: wrap;
-    max-width: 100%;
+    max-width: 80%;
     margin: auto;
     gap: 5px;
     align-items: center;
@@ -73,6 +73,7 @@ body{
 .producto{
     min-width: 15%;
     min-height: 200px;
+    margin: 10px;
     margin-bottom: 5px;
     background-color: rgb(214, 214, 214);
     border: 1px solid #007bff;
@@ -89,6 +90,7 @@ body{
     padding: 15px;
     list-style: none;
     text-align: left;
+
 }
 
 .producto li{
@@ -166,7 +168,7 @@ body{
 /* DESKTOP */
 @media screen and (max-width: 1024px) {
     .producto{
-        width: 30%;
+        width: 40%;
     }
     .producto h5{
         font-size: 18px;
@@ -183,7 +185,7 @@ body{
         width: 95%;
     }
     .producto{
-        width: 40%;
+        width: 49%;
     }
     .producto h5{
         font-size: 16px;

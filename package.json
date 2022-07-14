@@ -1,11 +1,24 @@
 {
   "name": "class-di-paolo",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Ignacio Di Paolo",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nachobeatbox/javaScript.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/nachobeatbox/javaScript/issues"
+  },
+  "homepage": "https://github.com/nachobeatbox/javaScript#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.4.4"
+  }
 }
