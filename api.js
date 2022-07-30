@@ -1,6 +1,6 @@
 const express = require('express');
-const mongoose = require('mongoose')
-const producto = require('./js/producto.controller')
+const mongoose = require('mongoose');
+const producto = require('./js/producto.controller');
 const app = express();
 const port = 3000;
 app.use(express.json());
@@ -20,10 +20,11 @@ app.use(express.static('images'));
 app.use(express.static('pages'));
 
 app.get('/', (req, res) =>{
-    console.log(__dirname)
-    res.sendFile(`${__dirname}/index.html`)
-})
+    console.log(__dirname);
+    res.sendFile(`${__dirname}/index.html`);
+});
+
 app.listen(port, () => {
     console.log('arrancando');
-})
+});
 
